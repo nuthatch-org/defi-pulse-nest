@@ -1,0 +1,195 @@
+# semantic.toml - what this nest's data *means* (RFC-0016). Read by the MCP `schema`
+# tool, the admin UI, and the scaffolded skill. Edit descriptions freely; the
+# `[table.*.footguns]` are DERIVED from the ABI and regenerated - leave them be.
+
+schema_version = 1
+
+[nest]
+description = "The `defi-pulse` nest on mainnet. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.aave__liquidation_call]
+description = "`LiquidationCall(address,address,address,uint256,uint256,address,bool)` events emitted by the `aave` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per LiquidationCall(address,address,address,uint256,uint256,address,bool) event"
+
+[table.aave__liquidation_call.columns]
+collateralAsset = "The `collateralAsset` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+debtAsset = "The `debtAsset` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+debtToCover = "The `debtToCover` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+liquidatedCollateralAmount = "The `liquidatedCollateralAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+liquidator = "The `liquidator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+receiveAToken = "The `receiveAToken` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `receiveAToken = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `receiveAToken = 'true'` or `CAST(receiveAToken AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.aave__liquidation_call.footguns]
+reserved_words = ["user"]
+big_ints = [
+    "debtToCover",
+    "liquidatedCollateralAmount",
+]
+overflows_dec = [
+    "debtToCover",
+    "liquidatedCollateralAmount",
+]
+bools = ["receiveAToken"]
+
+[table.eth_usd__answer_updated]
+description = "`AnswerUpdated(int256,uint256,uint256)` events emitted by the `eth_usd` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per AnswerUpdated(int256,uint256,uint256) event"
+
+[table.eth_usd__answer_updated.columns]
+current = "The `current` int256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+roundId = "The `roundId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+updatedAt = "The `updatedAt` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.eth_usd__answer_updated.footguns]
+big_ints = [
+    "current",
+    "roundId",
+    "updatedAt",
+]
+overflows_dec = [
+    "current",
+    "roundId",
+    "updatedAt",
+]
+
+[table.lido_wq__withdrawal_claimed]
+description = "`WithdrawalClaimed(uint256,address,address,uint256)` events emitted by the `lido_wq` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per WithdrawalClaimed(uint256,address,address,uint256) event"
+
+[table.lido_wq__withdrawal_claimed.columns]
+amountOfETH = "The `amountOfETH` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+receiver = "The `receiver` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requestId = "The `requestId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.lido_wq__withdrawal_claimed.footguns]
+big_ints = [
+    "requestId",
+    "amountOfETH",
+]
+overflows_dec = [
+    "requestId",
+    "amountOfETH",
+]
+
+[table.lido_wq__withdrawal_requested]
+description = "`WithdrawalRequested(uint256,address,address,uint256,uint256)` events emitted by the `lido_wq` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per WithdrawalRequested(uint256,address,address,uint256,uint256) event"
+
+[table.lido_wq__withdrawal_requested.columns]
+amountOfShares = "The `amountOfShares` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+amountOfStETH = "The `amountOfStETH` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requestId = "The `requestId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requestor = "The `requestor` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.lido_wq__withdrawal_requested.footguns]
+big_ints = [
+    "requestId",
+    "amountOfStETH",
+    "amountOfShares",
+]
+overflows_dec = [
+    "requestId",
+    "amountOfStETH",
+    "amountOfShares",
+]
+
+[table.lido_wq__withdrawals_finalized]
+description = "`WithdrawalsFinalized(uint256,uint256,uint256,uint256,uint256)` events emitted by the `lido_wq` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per WithdrawalsFinalized(uint256,uint256,uint256,uint256,uint256) event"
+
+[table.lido_wq__withdrawals_finalized.columns]
+amountOfETHLocked = "The `amountOfETHLocked` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+from = "The `from` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sharesToBurn = "The `sharesToBurn` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+timestamp = "The `timestamp` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+to = "The `to` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.lido_wq__withdrawals_finalized.footguns]
+reserved_words = [
+    "from",
+    "to",
+]
+big_ints = [
+    "from",
+    "to",
+    "amountOfETHLocked",
+    "sharesToBurn",
+    "timestamp",
+]
+overflows_dec = [
+    "from",
+    "to",
+    "amountOfETHLocked",
+    "sharesToBurn",
+    "timestamp",
+]
+
+[table.steth__submitted]
+description = "`Submitted(address,uint256,address)` events emitted by the `steth` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Submitted(address,uint256,address) event"
+
+[table.steth__submitted.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+referral = "The `referral` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sender = "The `sender` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.steth__submitted.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.usdc__burn]
+description = "`Burn(address,uint256)` events emitted by the `usdc` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Burn(address,uint256) event"
+
+[table.usdc__burn.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+burner = "The `burner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.usdc__burn.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.usdc__mint]
+description = "`Mint(address,address,uint256)` events emitted by the `usdc` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Mint(address,address,uint256) event"
+
+[table.usdc__mint.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+minter = "The `minter` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+to = "The `to` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.usdc__mint.footguns]
+reserved_words = ["to"]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.usdt__issue]
+description = "`Issue(uint256)` events emitted by the `usdt` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Issue(uint256) event"
+
+[table.usdt__issue.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.usdt__issue.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.usdt__redeem]
+description = "`Redeem(uint256)` events emitted by the `usdt` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Redeem(uint256) event"
+
+[table.usdt__redeem.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.usdt__redeem.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[view]
+
+# Authored views (views/*.sql) are described here so the MCP/`/schema` can render them:
+# [view.your_view_name]
+# description = "What this derivation computes."

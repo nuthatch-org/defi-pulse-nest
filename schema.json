@@ -1,0 +1,709 @@
+{
+  "registry_hash": "0xde749fe931a1358584b46e9cb885bfaae2931b7ac0982a11efc1de9f8b9784bf",
+  "tables": [
+    {
+      "table": "aave__liquidation_call",
+      "alias": "aave",
+      "event": "LiquidationCall(address,address,address,uint256,uint256,address,bool)",
+      "topic0": "0xe413a321e8681d831f4dbccbca790d2952b56f977908e45be37335533e005286",
+      "columns": [
+        {
+          "name": "block_number",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "block_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "block_timestamp",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "tx_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "log_index",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "address",
+          "sol_type": "implicit",
+          "storage": "address",
+          "indexed": false
+        },
+        {
+          "name": "_seq",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "collateralAsset",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "debtAsset",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "user",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "debtToCover",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        },
+        {
+          "name": "liquidatedCollateralAmount",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        },
+        {
+          "name": "liquidator",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": false
+        },
+        {
+          "name": "receiveAToken",
+          "sol_type": "bool",
+          "storage": "bool",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "table": "eth_usd__answer_updated",
+      "alias": "eth_usd",
+      "event": "AnswerUpdated(int256,uint256,uint256)",
+      "topic0": "0x0559884fd3a460db3073b7fc896cc77986f16e378210ded43186175bf646fc5f",
+      "columns": [
+        {
+          "name": "block_number",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "block_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "block_timestamp",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "tx_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "log_index",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "address",
+          "sol_type": "implicit",
+          "storage": "address",
+          "indexed": false
+        },
+        {
+          "name": "_seq",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "current",
+          "sol_type": "int256",
+          "storage": "word32",
+          "indexed": true
+        },
+        {
+          "name": "roundId",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": true
+        },
+        {
+          "name": "updatedAt",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "table": "lido_wq__withdrawal_claimed",
+      "alias": "lido_wq",
+      "event": "WithdrawalClaimed(uint256,address,address,uint256)",
+      "topic0": "0x6ad26c5e238e7d002799f9a5db07e81ef14e37386ae03496d7a7ef04713e145b",
+      "columns": [
+        {
+          "name": "block_number",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "block_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "block_timestamp",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "tx_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "log_index",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "address",
+          "sol_type": "implicit",
+          "storage": "address",
+          "indexed": false
+        },
+        {
+          "name": "_seq",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "requestId",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": true
+        },
+        {
+          "name": "owner",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "receiver",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "amountOfETH",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "table": "lido_wq__withdrawal_requested",
+      "alias": "lido_wq",
+      "event": "WithdrawalRequested(uint256,address,address,uint256,uint256)",
+      "topic0": "0xf0cb471f23fb74ea44b8252eb1881a2dca546288d9f6e90d1a0e82fe0ed342ab",
+      "columns": [
+        {
+          "name": "block_number",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "block_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "block_timestamp",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "tx_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "log_index",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "address",
+          "sol_type": "implicit",
+          "storage": "address",
+          "indexed": false
+        },
+        {
+          "name": "_seq",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "requestId",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": true
+        },
+        {
+          "name": "requestor",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "owner",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "amountOfStETH",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        },
+        {
+          "name": "amountOfShares",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "table": "lido_wq__withdrawals_finalized",
+      "alias": "lido_wq",
+      "event": "WithdrawalsFinalized(uint256,uint256,uint256,uint256,uint256)",
+      "topic0": "0x197874c72af6a06fb0aa4fab45fd39c7cb61ac0992159872dc3295207da7e9eb",
+      "columns": [
+        {
+          "name": "block_number",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "block_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "block_timestamp",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "tx_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "log_index",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "address",
+          "sol_type": "implicit",
+          "storage": "address",
+          "indexed": false
+        },
+        {
+          "name": "_seq",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "from",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": true
+        },
+        {
+          "name": "to",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": true
+        },
+        {
+          "name": "amountOfETHLocked",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        },
+        {
+          "name": "sharesToBurn",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        },
+        {
+          "name": "timestamp",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "table": "steth__submitted",
+      "alias": "steth",
+      "event": "Submitted(address,uint256,address)",
+      "topic0": "0x96a25c8ce0baabc1fdefd93e9ed25d8e092a3332f3aa9a41722b5697231d1d1a",
+      "columns": [
+        {
+          "name": "block_number",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "block_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "block_timestamp",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "tx_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "log_index",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "address",
+          "sol_type": "implicit",
+          "storage": "address",
+          "indexed": false
+        },
+        {
+          "name": "_seq",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "sender",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "amount",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        },
+        {
+          "name": "referral",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "table": "usdc__burn",
+      "alias": "usdc",
+      "event": "Burn(address,uint256)",
+      "topic0": "0xcc16f5dbb4873280815c1ee09dbd06736cffcc184412cf7a71a0fdb75d397ca5",
+      "columns": [
+        {
+          "name": "block_number",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "block_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "block_timestamp",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "tx_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "log_index",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "address",
+          "sol_type": "implicit",
+          "storage": "address",
+          "indexed": false
+        },
+        {
+          "name": "_seq",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "burner",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "amount",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "table": "usdc__mint",
+      "alias": "usdc",
+      "event": "Mint(address,address,uint256)",
+      "topic0": "0xab8530f87dc9b59234c4623bf917212bb2536d647574c8e7e5da92c2ede0c9f8",
+      "columns": [
+        {
+          "name": "block_number",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "block_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "block_timestamp",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "tx_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "log_index",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "address",
+          "sol_type": "implicit",
+          "storage": "address",
+          "indexed": false
+        },
+        {
+          "name": "_seq",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "minter",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "to",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "amount",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "table": "usdt__issue",
+      "alias": "usdt",
+      "event": "Issue(uint256)",
+      "topic0": "0xcb8241adb0c3fdb35b70c24ce35c5eb0c17af7431c99f827d44a445ca624176a",
+      "columns": [
+        {
+          "name": "block_number",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "block_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "block_timestamp",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "tx_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "log_index",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "address",
+          "sol_type": "implicit",
+          "storage": "address",
+          "indexed": false
+        },
+        {
+          "name": "_seq",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "amount",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "table": "usdt__redeem",
+      "alias": "usdt",
+      "event": "Redeem(uint256)",
+      "topic0": "0x702d5967f45f6513a38ffc42d6ba9bf230bd40e8f53b16363c7eb4fd2deb9a44",
+      "columns": [
+        {
+          "name": "block_number",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "block_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "block_timestamp",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "tx_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "log_index",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "address",
+          "sol_type": "implicit",
+          "storage": "address",
+          "indexed": false
+        },
+        {
+          "name": "_seq",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "amount",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        }
+      ]
+    }
+  ]
+}

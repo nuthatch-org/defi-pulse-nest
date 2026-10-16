@@ -1,0 +1,40 @@
+# nuthatch nest on mainnet
+
+A self-hosted blockchain index. Query it locally; there is no third-party API.
+
+## Contracts
+- `usdc` = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
+- `usdt` = 0xdAC17F958D2ee523a2206206994597C13D831ec7
+- `aave` = 0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2
+- `steth` = 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84
+- `lido_wq` = 0x889edC2eDab5f40e902b864aD4d7AdE8E412F9B1
+- `eth_usd` = 0x7d4E742018fb52E48b08BE73d041C18B21de6Fb5
+
+## Tables (one per contract event)
+- `aave__liquidation_call` - LiquidationCall(address,address,address,uint256,uint256,address,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, collateralAsset, debtAsset, user, debtToCover, liquidatedCollateralAmount, liquidator, receiveAToken)
+- `eth_usd__answer_updated` - AnswerUpdated(int256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, current, roundId, updatedAt)
+- `lido_wq__withdrawal_claimed` - WithdrawalClaimed(uint256,address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requestId, owner, receiver, amountOfETH)
+- `lido_wq__withdrawal_requested` - WithdrawalRequested(uint256,address,address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requestId, requestor, owner, amountOfStETH, amountOfShares)
+- `lido_wq__withdrawals_finalized` - WithdrawalsFinalized(uint256,uint256,uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, from, to, amountOfETHLocked, sharesToBurn, timestamp)
+- `steth__submitted` - Submitted(address,uint256,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, sender, amount, referral)
+- `usdc__burn` - Burn(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, burner, amount)
+- `usdc__mint` - Mint(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, minter, to, amount)
+- `usdt__issue` - Issue(uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, amount)
+- `usdt__redeem` - Redeem(uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, amount)
+
+## Live HTTP API (run `nuthatch dev`)
+- `GET /`                    index status
+- `GET /tables`              every table with its columns
+- `GET /table/{name}?limit=N` recent rows of one table (hot + sealed)
+- `GET /entity/{id}`         one row by id (`{block:012}-{logindex:06}`)
+- `GET /sql?q=SELECT...`     read-only SQL; each table is a view named `{alias}__{event}`, and each
+                             authored view (`views/*.sql`) answers by its own name
+- `GET /balances?limit=N`    top holder balances (when an ERC-20 Transfer table is present)
+- `GET /balance/{address}`   one address's derived balance
+- `GET /queries`             the mount's SQL mode and the queries its operator declared in
+                             `mounts.toml` (none on an open nest); `GET /q/{name}` runs one
+- `GET /derived`             the nest's incremental entities (`entities.toml`); `GET /derived/{entity}` reads one
+
+## MCP (for coding agents)
+Run `nuthatch mcp` (stdio) to expose tools: status, schema, tables, table, sql, entity,
+balance, top_balances. Fully offline against the local instance; nothing phones home.

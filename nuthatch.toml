@@ -1,0 +1,56 @@
+# DeFi Pulse: a small mainnet nest of the events people check daily, light enough for a browser tab.
+# Stablecoin issuance, Aave v3 liquidations, Lido staking flows and the ETH/USD price, from 2026-01-01.
+
+[nest]
+name = "defi-pulse"
+chain = "mainnet"
+chain_id = 1
+rpc_urls = ["https://ethereum-rpc.publicnode.com"]   # a keyed endpoint goes on the command line: --rpc
+schema_version = 1
+block_timestamps = true
+
+# USDC: a proxy, so the events come from the implementation's ABI.
+[[contracts]]
+alias = "usdc"
+address = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+start_block = 24136053
+abi = "abis/usdc.json"
+events = ["Mint", "Burn"]
+
+[[contracts]]
+alias = "usdt"
+address = "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+start_block = 24136053
+abi = "abis/usdt.json"
+events = ["Issue", "Redeem"]
+
+# Aave v3 Pool: a proxy; LiquidationCall from the implementation's ABI.
+[[contracts]]
+alias = "aave"
+address = "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2"
+start_block = 24136053
+abi = "abis/aave_pool.json"
+events = ["LiquidationCall"]
+
+[[contracts]]
+alias = "steth"
+address = "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84"
+start_block = 24136053
+abi = "abis/steth.json"
+events = ["Submitted"]
+
+[[contracts]]
+alias = "lido_wq"
+address = "0x889edC2eDab5f40e902b864aD4d7AdE8E412F9B1"
+start_block = 24136053
+abi = "abis/lido_withdrawal_queue.json"
+events = ["WithdrawalRequested", "WithdrawalsFinalized", "WithdrawalClaimed"]
+
+# Chainlink ETH/USD. The proxy 0x5f4e…8419 emits nothing; its phase-7 aggregator, live for the whole
+# range, emits AnswerUpdated. A new phase means adding the next aggregator here.
+[[contracts]]
+alias = "eth_usd"
+address = "0x7d4E742018fb52E48b08BE73d041C18B21de6Fb5"
+start_block = 24136053
+abi = "abis/eth_usd.json"
+events = ["AnswerUpdated"]
