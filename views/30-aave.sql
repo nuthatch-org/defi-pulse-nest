@@ -18,7 +18,8 @@ SELECT * FROM (VALUES
 ) AS t(asset, symbol, decimals, priced);
 
 -- Every liquidation: who was liquidated, what was seized and repaid, in token units and, where the
--- asset is priced, in dollars at that hour's ETH/USD close.
+-- asset is priced, in dollars at that hour's ETH/USD close. An asset missing from aave_assets is
+-- shown by address, with its amount NULL: its decimals are not known here.
 CREATE VIEW aave_liquidations AS
 SELECT
   to_timestamp(l.block_timestamp) AS at,
@@ -27,9 +28,9 @@ SELECT
   l."user" AS borrower,
   l.liquidator,
   coalesce(c.symbol, l."collateralAsset") AS collateral,
-  CAST(l."liquidatedCollateralAmount_dec" AS DOUBLE) / power(10, coalesce(c.decimals, 18)) AS collateral_amount,
+  CAST(l."liquidatedCollateralAmount_dec" AS DOUBLE) / power(10, c.decimals) AS collateral_amount,
   coalesce(d.symbol, l."debtAsset") AS debt,
-  CAST(l."debtToCover_dec" AS DOUBLE) / power(10, coalesce(d.decimals, 18)) AS debt_repaid,
+  CAST(l."debtToCover_dec" AS DOUBLE) / power(10, d.decimals) AS debt_repaid,
   CASE d.priced
     WHEN 'usd' THEN CAST(l."debtToCover_dec" AS DOUBLE) / power(10, d.decimals)
     WHEN 'eth' THEN CAST(l."debtToCover_dec" AS DOUBLE) / power(10, d.decimals) * p.close
