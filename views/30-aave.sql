@@ -1,6 +1,7 @@
--- Aave v3 reserves this nest can name. Priced in dollars: WETH by the hour's Chainlink close, and
--- USDC, USDT, DAI, USDS and GHO at one dollar. The rest (staked ETH, BTC wrappers, USDe) need an
--- exchange rate or a feed this nest does not have, so their dollar value is NULL, not a guess.
+-- Aave v3 reserves this nest can name, each symbol and decimals read from the token on 2026-10-16.
+-- Priced in dollars: WETH by the hour's Chainlink close, and USDC, USDT, DAI, USDS, GHO, PYUSD and
+-- RLUSD at one dollar. The rest need an exchange rate or a feed this nest does not have, so their
+-- dollar value is NULL, not a guess.
 CREATE VIEW aave_assets AS
 SELECT * FROM (VALUES
   ('0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', 'WETH', 18, 'eth'),
@@ -14,7 +15,27 @@ SELECT * FROM (VALUES
   ('0xdc035d45d973e3ec169d2276ddab16f1e407384f', 'USDS', 18, 'usd'),
   ('0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f', 'GHO', 18, 'usd'),
   ('0x4c9edd5852cd905f086c759e8383e09bff1e68b3', 'USDe', 18, 'none'),
-  ('0x9d39a5de30e57443bff2a8307a4256c8797a3497', 'sUSDe', 18, 'none')
+  ('0x9d39a5de30e57443bff2a8307a4256c8797a3497', 'sUSDe', 18, 'none'),
+  ('0x6c3ea9036406852006290770bedfcaba0e23a0e8', 'PYUSD', 6, 'usd'),
+  ('0x8292bb45bf1ee4d140127049757c2e0ff06317ed', 'RLUSD', 18, 'usd'),
+  ('0x514910771af9ca656af840dff83e8264ecf986ca', 'LINK', 18, 'none'),
+  ('0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9', 'AAVE', 18, 'none'),
+  ('0xba100000625a3754423978a60c9317c58a424e3d', 'BAL', 18, 'none'),
+  ('0x1abaea1f7c830bd89acc67ec4af516284b1bc33c', 'EURC', 6, 'none'),
+  ('0xc139190f447e929f090edeb554d95abb8b18ac1c', 'USDtb', 18, 'none'),
+  ('0x18084fba666a33d37592fa2633fd49a74dd93a88', 'tBTC', 18, 'none'),
+  ('0xae78736cd615f374d3085123a210448e74fc6393', 'rETH', 18, 'none'),
+  ('0x1f9840a85d5af5bf1d1762f925bdaddc4201f984', 'UNI', 18, 'none'),
+  ('0xbe9895146f7af43049ca1c1ae358b0541ea49704', 'cbETH', 18, 'none'),
+  ('0x68749665ff8d2d112fa859aa293f07a622782f38', 'XAUt', 6, 'none'),
+  ('0x5a98fcbea516cf06857215779fd812ca3bef1b32', 'LDO', 18, 'none'),
+  ('0x8236a87084f8b84306f72007f36f2618a5634494', 'LBTC', 8, 'none'),
+  ('0x657e8c867d8b37dcc18fa4caead9c45eb088c642', 'eBTC', 8, 'none'),
+  ('0xf939e0a03fb07f59a73314e73794be0e57ac1b4e', 'crvUSD', 18, 'none'),
+  ('0xd533a949740bb3306d119cc777fa900ba034cd52', 'CRV', 18, 'none'),
+  ('0xa35b1b31ce002fbf2058d22f30f95d405200a15b', 'ETHx', 18, 'none'),
+  ('0x853d955acef822db058eb8505911ed77f175b99e', 'FRAX', 18, 'none'),
+  ('0xa1290d69c65a6fe4df752f95823fae25cb99e5a7', 'rsETH', 18, 'none')
 ) AS t(asset, symbol, decimals, priced);
 
 -- Every liquidation: who was liquidated, what was seized and repaid, in token units and, where the

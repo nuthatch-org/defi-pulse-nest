@@ -31,9 +31,10 @@ day; transfers would be millions, and the nest would stop fitting in a tab.
 ## What it does not price
 
 Dollar values come from the Chainlink ETH/USD close for WETH, and from one dollar for USDC, USDT,
-DAI, USDS and GHO. wstETH, weETH, WBTC, cbBTC, USDe and sUSDe need an exchange rate or a feed this
-nest does not have, so a liquidation in them shows its token amounts and a NULL dollar value rather
-than a guess. `aave_liquidations_daily` counts how many of a day's liquidations were unpriced.
+DAI, USDS, GHO, PYUSD and RLUSD. Staked ETH, BTC wrappers, governance tokens and the other dollar
+tokens need an exchange rate or a feed this nest does not have, so a liquidation in them shows its
+token amounts and a NULL dollar value rather than a guess. An asset missing from `aave_assets`
+shows its address and no amount, since its decimals are not known. `aave_liquidations_daily` counts how many of a day's liquidations were unpriced.
 
 Chainlink's feed changes aggregator when it moves to a new phase. The one listed has been live since
 before 2026; a new phase means adding the next aggregator to `nuthatch.toml`.
